@@ -1,0 +1,15 @@
+{
+    "appId": "com.gipjazes.flowers",
+    "appName": "Gipjazes Flowers",
+    "webDir": "public",
+    "server": {
+        "url": "http://10.0.2.2:3001",
+        "cleartext": true,
+        "androidScheme": "https"
+    },
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        }
+    }
+}

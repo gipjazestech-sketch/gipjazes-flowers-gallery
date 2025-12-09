@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Gipjazes Flowers</string>
+    <string name="title_activity_main">Gipjazes Flowers</string>
+    <string name="package_name">com.gipjazes.flowers</string>
+    <string name="custom_url_scheme">com.gipjazes.flowers</string>
+</resources>
