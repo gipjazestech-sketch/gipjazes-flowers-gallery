@@ -1,11 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-export const metadata = {
-  verification: {
-    google: 51ac07993292d92f',
-  },
-}
 export const dynamic = 'force-dynamic';
 
 async function getImages() {

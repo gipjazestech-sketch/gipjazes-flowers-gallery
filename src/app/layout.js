@@ -4,6 +4,9 @@ import Background from '@/components/Background'
 export const metadata = {
   title: 'Gipjazes Flowers Gallery',
   description: 'Premium Flower Gallery',
+  verification: {
+    google: '51ac07993292d92f',
+  },
 }
 
 export default function RootLayout({ children }) {
