@@ -1,6 +1,8 @@
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import Image from 'next/image';
+
 export const dynamic = 'force-dynamic';
 
 async function getImages() {
@@ -18,17 +20,24 @@ export default async function Home() {
   return (
     <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto' }}>
       <header style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h1 style={{ fontSize: '4rem', marginBottom: '10px', background: 'linear-gradient(to bottom right, #fff, #d946ef)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <h1 className="animate-fade-in" style={{ fontSize: '4rem', marginBottom: '10px', background: 'linear-gradient(to bottom right, #fff, #d946ef)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           Gipjazes Flowers
         </h1>
-        <p style={{ opacity: 0.8, fontSize: '1.2rem', fontWeight: 300 }}>
+        <p className="animate-fade-in" style={{ opacity: 0.8, fontSize: '1.2rem', fontWeight: 300, animationDelay: '0.2s' }}>
           Exclusive 4D Digital Flora Collection
         </p>
-        <Link href="/admin/upload" style={{
-          marginTop: '20px', display: 'inline-block', opacity: 0.4, fontSize: '0.9rem', textDecoration: 'none'
-        }}>
-          Owner Portal
-        </Link>
+
+        <div style={{ marginTop: '30px', padding: '15px', background: 'rgba(255,255,255,0.05)', borderRadius: '15px', display: 'inline-block' }}>
+          <p style={{ fontSize: '0.9rem', color: '#10b981' }}>⚡ Optimized for Mobile & Android - Lightning Fast Loading</p>
+        </div>
+
+        <div style={{ marginTop: '20px' }}>
+          <Link href="/admin/upload" style={{
+            opacity: 0.4, fontSize: '0.8rem', textDecoration: 'none', marginRight: '15px'
+          }}>
+            Owner Portal
+          </Link>
+        </div>
       </header>
 
       <div style={{
@@ -42,12 +51,15 @@ export default async function Home() {
           </div>
         ) : (
           images.map(img => (
-            <div key={img} className="glass-panel" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', transition: 'transform 0.3s' }}>
-              <div style={{ height: '350px', width: '100%', position: 'relative', overflow: 'hidden' }}>
-                <img
+            <div key={img} className="glass-panel" style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ height: '400px', width: '100%', position: 'relative', overflow: 'hidden' }}>
+                <Image
                   src={`/uploads/${img}`}
                   alt={img}
+                  fill
+                  style={{ objectFit: 'cover' }}
                   className="flower-card-img"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div style={{ padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'rgba(0,0,0,0.3)' }}>
@@ -65,13 +77,31 @@ export default async function Home() {
                     <polyline points="7 10 12 15 17 10" />
                     <line x1="12" y1="15" x2="12" y2="3" />
                   </svg>
-                  Download
+                  Get High Res
                 </a>
               </div>
             </div>
           ))
         )}
       </div>
+
+      <section style={{ marginTop: '80px', padding: '40px', background: 'rgba(255,255,255,0.03)', borderRadius: '30px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Premium Performance</h2>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '20px' }}>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', color: '#d946ef' }}>WebP</h3>
+            <p style={{ opacity: 0.7 }}>Modern formats for 80% smaller sizes</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', color: '#d946ef' }}>Lazy Load</h3>
+            <p style={{ opacity: 0.7 }}>Only loads what you see</p>
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.5rem', color: '#d946ef' }}>Responsive</h3>
+            <p style={{ opacity: 0.7 }}>Perfect fit for Android & iOS</p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

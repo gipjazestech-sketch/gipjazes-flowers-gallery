@@ -5,7 +5,7 @@ export const metadata = {
   title: 'Gipjazes Flowers Gallery',
   description: 'Premium Flower Gallery',
   verification: {
-    google: '51ac07993292d92f',
+    google: 'HaqAUWNQx0X6PqVdmDzJt0BoW7wtk7fvzeCA9A85B0o',
   },
 }
 
