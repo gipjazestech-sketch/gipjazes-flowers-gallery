@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
         {/* Google AdSense - Manual Placeholder */}
         <Script
           async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2198481548549346"
           crossOrigin="anonymous"
           strategy="afterInteractive"
         />
