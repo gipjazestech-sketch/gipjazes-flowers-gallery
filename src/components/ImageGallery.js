@@ -39,26 +39,28 @@ function ImageCard({ image, index }) {
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
-            {/* Always visible on mobile, hover on desktop */}
-            <div className="card-overlay">
-                <div className="w-full flex justify-between items-center" style={{ pointerEvents: 'auto' }}>
-                    <div style={{ maxWidth: '70%' }}>
-                        <h3 className="text-sm font-medium text-white truncate">
-                            {image.title ? image.title.split('/').pop() : 'Stunning Bloom'}
+            <div className="card-overlay" style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)' }}>
+                <div className="w-full flex flex-col gap-4">
+                    <div className="flex justify-between items-center">
+                        <h3 className="text-sm font-bold text-white uppercase tracking-widest">
+                            {image.title ? image.title.split('/').pop().split('.')[0] : 'Digital Flora'}
                         </h3>
+                        <span className="text-[10px] text-white/50 bg-white/10 px-2 py-1 rounded">4D • HQ</span>
                     </div>
+
                     <a
                         href={image.downloadUrl || imageSrc}
                         download
                         style={{ zIndex: 10, position: 'relative' }}
-                        className="bg-white/20 hover:bg-white/40 backdrop-blur-xl p-3 rounded-full transition-all"
+                        className="btn-statement"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" />
                             <polyline points="7 10 12 15 17 10" />
                             <line x1="12" y1="15" x2="12" y2="3" />
                         </svg>
+                        <span>COLLECT BLOOM</span>
                     </a>
                 </div>
             </div>
