@@ -4,11 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import OptimizedImage from './OptimizedImage'
 import './Gallery.css'
 
-export default function ImageGallery({ images = [], columns = { mobile: 1, tablet: 2, desktop: 3 } }) {
+export default function ImageGallery({ images = [] }) {
     const [loadedImages, setLoadedImages] = useState(new Set())
     const observerRef = useRef(null)
 
     useEffect(() => {
+        // More reliable observer settings
         observerRef.current = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -20,7 +21,7 @@ export default function ImageGallery({ images = [], columns = { mobile: 1, table
                 })
             },
             {
-                rootMargin: '100px',
+                rootMargin: '200px', // Load much earlier
                 threshold: 0.01,
             }
         )
@@ -34,16 +35,16 @@ export default function ImageGallery({ images = [], columns = { mobile: 1, table
         <div className="gallery-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {images.length === 0 ? (
                 <div style={{ gridColumn: '1/-1', padding: '100px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px dashed rgba(255,255,255,0.1)' }}>
-                    <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>No flowers are currently in bloom.</p>
+                    <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>Your flower garden is empty.<br />Upload your first bloom!</p>
                 </div>
             ) : (
                 images.map((image, index) => (
                     <ImageCard
-                        key={image.id || index}
+                        key={image.url || image.src || index}
                         image={image}
                         index={index}
                         observerRef={observerRef}
-                        isLoaded={loadedImages.has(String(image.id || index))}
+                        isLoaded={loadedImages.has(String(index))}
                     />
                 ))
             )}
@@ -53,6 +54,7 @@ export default function ImageGallery({ images = [], columns = { mobile: 1, table
 
 function ImageCard({ image, index, observerRef, isLoaded }) {
     const cardRef = useRef(null)
+    const imageSrc = typeof image === 'string' ? `/uploads/${image}` : (image.src || image.url)
 
     useEffect(() => {
         const currentCard = cardRef.current
@@ -66,40 +68,40 @@ function ImageCard({ image, index, observerRef, isLoaded }) {
         }
     }, [observerRef, isLoaded])
 
-    const imageSrc = typeof image === 'string' ? `/uploads/${image}` : image.src
-
     return (
         <div
             ref={cardRef}
-            data-image-id={image.id || index}
+            data-image-id={index}
             className="group relative flower-card rounded-lg overflow-hidden"
             style={{
-                aspectRatio: image.aspectRatio || '4/5',
-                minHeight: '400px'
+                aspectRatio: '4/5',
+                minHeight: '400px',
+                background: 'rgba(255,255,255,0.02)'
             }}
         >
             {isLoaded ? (
                 <>
                     <OptimizedImage
                         src={imageSrc}
-                        alt={image.alt || `Flower ${index + 1}`}
+                        alt="Flower"
                         fill={true}
+                        priority={index < 2} // Load first two immediately
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        className="w-full h-full"
                     />
 
-                    {/* Hover Overlay */}
-                    <div className="absolute inset-0 bg-black-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    {/* Overlay - Always visible on mobile, hover on desktop */}
+                    <div className="absolute inset-0 bg-black-60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                         <div className="w-full flex justify-between items-center">
-                            <div>
-                                <h3 className="text-lg font-semibold text-white">{image.title || (typeof image === 'string' ? image : 'Stunning Bloom')}</h3>
-                                <p className="text-xs text-white/60">Tap to bloom</p>
+                            <div style={{ maxWidth: '70%' }}>
+                                <h3 className="text-sm font-medium text-white truncate" title={image.title || 'Flower'}>
+                                    {image.title ? image.title.split('/').pop() : 'Stunning Bloom'}
+                                </h3>
                             </div>
 
                             <a
-                                href={imageSrc}
+                                href={image.downloadUrl || imageSrc}
                                 download
-                                className="bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full transition-all"
+                                className="bg-white/20 hover:bg-white/40 backdrop-blur-xl p-3 rounded-full transition-all"
                                 onClick={(e) => e.stopPropagation()}
                             >
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2">
@@ -112,7 +114,7 @@ function ImageCard({ image, index, observerRef, isLoaded }) {
                     </div>
                 </>
             ) : (
-                <div className="w-full h-full shimmer-effect" style={{ background: 'rgba(255,255,255,0.03)' }} />
+                <div className="w-full h-full shimmer-effect" />
             )}
         </div>
     )
