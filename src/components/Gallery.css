@@ -22,29 +22,29 @@
 }
 
 @media (min-width: 768px) {
-    .md\:grid-cols-2 {
+    .md-grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .md\:grid-cols-3 {
+    .md-grid-cols-3 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .md\:grid-cols-4 {
+    .md-grid-cols-4 {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
 
 @media (min-width: 1024px) {
-    .lg\:grid-cols-3 {
+    .lg-grid-cols-3 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
-    .lg\:grid-cols-4 {
+    .lg-grid-cols-4 {
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
-    .lg\:grid-cols-5 {
+    .lg-grid-cols-5 {
         grid-template-columns: repeat(5, minmax(0, 1fr));
     }
 }
@@ -96,22 +96,6 @@
     text-align: center;
 }
 
-.opacity-0 {
-    opacity: 0;
-}
-
-.opacity-100 {
-    opacity: 1;
-}
-
-.transition-opacity {
-    transition: opacity 0.3s;
-}
-
-.group:hover .group-hover\:opacity-100 {
-    opacity: 1;
-}
-
 .bg-black-60 {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
 }
@@ -141,4 +125,58 @@
     100% {
         background-position: 200% 0;
     }
+}
+
+/* Image Transitions */
+.duration-700 {
+    transition-duration: 700ms;
+}
+
+.ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scale-110 {
+    transform: scale(1.1);
+}
+
+.scale-100 {
+    transform: scale(1);
+}
+
+.blur-xl {
+    filter: blur(24px);
+}
+
+.blur-0 {
+    filter: blur(0);
+}
+
+/* Overlay Logic */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: end;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    opacity: 1;
+    /* Always visible on mobile */
+    transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .card-overlay {
+        opacity: 0;
+    }
+
+    .flower-card:hover .card-overlay {
+        opacity: 1;
+    }
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

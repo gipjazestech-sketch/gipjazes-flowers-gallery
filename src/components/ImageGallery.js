@@ -9,7 +9,6 @@ export default function ImageGallery({ images = [] }) {
     const observerRef = useRef(null)
 
     useEffect(() => {
-        // More reliable observer settings
         observerRef.current = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
@@ -20,22 +19,16 @@ export default function ImageGallery({ images = [] }) {
                     }
                 })
             },
-            {
-                rootMargin: '200px', // Load much earlier
-                threshold: 0.01,
-            }
+            { rootMargin: '250px', threshold: 0.01 }
         )
-
-        return () => {
-            observerRef.current?.disconnect()
-        }
+        return () => observerRef.current?.disconnect()
     }, [])
 
     return (
-        <div className="gallery-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="gallery-grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3">
             {images.length === 0 ? (
                 <div style={{ gridColumn: '1/-1', padding: '100px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px dashed rgba(255,255,255,0.1)' }}>
-                    <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>Your flower garden is empty.<br />Upload your first bloom!</p>
+                    <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>Your gallery is empty.<br />Upload your first flower!</p>
                 </div>
             ) : (
                 images.map((image, index) => (
@@ -54,18 +47,14 @@ export default function ImageGallery({ images = [] }) {
 
 function ImageCard({ image, index, observerRef, isLoaded }) {
     const cardRef = useRef(null)
-    const imageSrc = typeof image === 'string' ? `/uploads/${image}` : (image.src || image.url)
+    const imageSrc = image.src || image.url
 
     useEffect(() => {
         const currentCard = cardRef.current
         if (currentCard && observerRef.current && !isLoaded) {
             observerRef.current.observe(currentCard)
         }
-        return () => {
-            if (currentCard && observerRef.current) {
-                observerRef.current.unobserve(currentCard)
-            }
-        }
+        return () => currentCard && observerRef.current && observerRef.current.unobserve(currentCard)
     }, [observerRef, isLoaded])
 
     return (
@@ -73,11 +62,7 @@ function ImageCard({ image, index, observerRef, isLoaded }) {
             ref={cardRef}
             data-image-id={index}
             className="group relative flower-card rounded-lg overflow-hidden"
-            style={{
-                aspectRatio: '4/5',
-                minHeight: '400px',
-                background: 'rgba(255,255,255,0.02)'
-            }}
+            style={{ aspectRatio: '4/5', minHeight: '350px' }}
         >
             {isLoaded ? (
                 <>
@@ -85,19 +70,16 @@ function ImageCard({ image, index, observerRef, isLoaded }) {
                         src={imageSrc}
                         alt="Flower"
                         fill={true}
-                        priority={index < 2} // Load first two immediately
+                        priority={index < 3}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-
-                    {/* Overlay - Always visible on mobile, hover on desktop */}
-                    <div className="absolute inset-0 bg-black-60 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                    <div className="card-overlay">
                         <div className="w-full flex justify-between items-center">
                             <div style={{ maxWidth: '70%' }}>
-                                <h3 className="text-sm font-medium text-white truncate" title={image.title || 'Flower'}>
+                                <h3 className="text-sm font-medium text-white truncate">
                                     {image.title ? image.title.split('/').pop() : 'Stunning Bloom'}
                                 </h3>
                             </div>
-
                             <a
                                 href={image.downloadUrl || imageSrc}
                                 download
