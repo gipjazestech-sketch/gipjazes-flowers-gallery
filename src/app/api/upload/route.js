@@ -3,6 +3,11 @@ import { NextResponse } from 'next/server';
 
 export async function POST(req) {
     try {
+        const password = req.headers.get('x-upload-password');
+        if (password !== '0916sam') {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+        }
+
         const formData = await req.formData();
         const file = formData.get('file');
 

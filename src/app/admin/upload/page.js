@@ -6,6 +6,7 @@ export default function UploadPage() {
     const [file, setFile] = useState(null);
     const [status, setStatus] = useState('');
     const [preview, setPreview] = useState(null);
+    const [password, setPassword] = useState('');
 
     const handleFileChange = (e) => {
         const f = e.target.files[0];
@@ -27,6 +28,9 @@ export default function UploadPage() {
         try {
             const res = await fetch('/api/upload', {
                 method: 'POST',
+                headers: {
+                    'x-upload-password': password,
+                },
                 body: formData,
             });
 
@@ -34,6 +38,7 @@ export default function UploadPage() {
                 setStatus('Success! Flower planted.');
                 setFile(null);
                 setPreview(null);
+                setPassword('');
                 // Reset file input
                 document.getElementById('fileInput').value = '';
             } else {
@@ -52,6 +57,22 @@ export default function UploadPage() {
                     Plant a Flower
                 </h2>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                    <input
+                        type="password"
+                        placeholder="Security Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        style={{
+                            padding: '12px 15px',
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            borderRadius: '8px',
+                            color: '#fff',
+                            fontSize: '0.9rem',
+                            outline: 'none'
+                        }}
+                    />
 
                     <div style={{
                         border: '2px dashed #ffffff33',
@@ -93,7 +114,7 @@ export default function UploadPage() {
                     <button
                         type="submit"
                         className="btn-premium"
-                        style={{ justifyContent: 'center', opacity: file ? 1 : 0.5, pointerEvents: file ? 'all' : 'none' }}
+                        style={{ justifyContent: 'center', opacity: file && password ? 1 : 0.5, pointerEvents: file && password ? 'all' : 'none' }}
                     >
                         Upload to Gallery
                     </button>
