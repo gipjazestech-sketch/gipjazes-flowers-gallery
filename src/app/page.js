@@ -72,6 +72,9 @@ export default async function Home() {
           <Link href="/privacy" style={{ color: '#fff', opacity: 0.4, textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '2px' }}>PRIVACY</Link>
           <a href="#" style={{ color: '#fff', opacity: 0.4, textDecoration: 'none', fontSize: '0.8rem', letterSpacing: '2px' }}>SUPPORT</a>
         </div>
+        <p style={{ fontSize: '0.9rem', opacity: 0.6, marginBottom: '15px', fontStyle: 'italic' }}>
+          (download to use as phone wallpapers and others)
+        </p>
         <p style={{ fontSize: '0.7rem', opacity: 0.2, letterSpacing: '1px' }}>© 2025 GIPJAZES GALLERY • ALL RIGHTS RESERVED</p>
       </footer>
     </div>
