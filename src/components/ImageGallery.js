@@ -1,6 +1,7 @@
 'use client'
 
 import OptimizedImage from './OptimizedImage'
+import { Share2 } from 'lucide-react'
 import './Gallery.css'
 
 export default function ImageGallery({ images = [] }) {
@@ -35,15 +36,15 @@ function ImageCard({ image, index }) {
                 src={imageSrc}
                 alt="Flower"
                 fill={true}
-                priority={index < 4}
+                priority={index < 8}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
 
-            <div className="card-overlay-permanent">
+            <div className="card-overlay-permanent" style={{ display: 'flex', gap: '10px' }}>
                 <a
                     href={image.downloadUrl || imageSrc}
                     download
-                    style={{ zIndex: 10, position: 'relative', width: '100%' }}
+                    style={{ zIndex: 10, position: 'relative', flex: 1 }}
                     className="btn-statement"
                     onClick={(e) => e.stopPropagation()}
                 >
@@ -52,8 +53,32 @@ function ImageCard({ image, index }) {
                         <polyline points="7 10 12 15 17 10" />
                         <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    <span>DOWNLOAD</span>
+                    <span>GET</span>
                 </a>
+                <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Gipjazes Flowers',
+                                text: 'Check out this stunning 4D Digital Flower!',
+                                url: window.location.href,
+                            });
+                        }
+                    }}
+                    style={{
+                        zIndex: 10,
+                        position: 'relative',
+                        width: '50px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer'
+                    }}
+                    className="btn-statement"
+                >
+                    <Share2 size={16} />
+                </button>
             </div>
         </div>
     )

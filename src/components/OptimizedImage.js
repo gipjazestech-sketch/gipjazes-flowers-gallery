@@ -42,8 +42,8 @@ export default function OptimizedImage({
                     setHasError(true)
                 }}
                 className={`
-                    duration-1000 ease-in-out object-cover
-                    ${isLoading ? 'scale-110 blur-xl opacity-0' : 'scale-100 blur-0 opacity-100'}
+                    duration-300 ease-in-out object-cover
+                    ${isLoading ? 'scale-105 blur-lg opacity-0' : 'scale-100 blur-0 opacity-100'}
                 `}
             />
         </div>

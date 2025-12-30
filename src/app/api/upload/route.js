@@ -10,13 +10,14 @@ export async function POST(req) {
 
         const formData = await req.formData();
         const file = formData.get('file');
+        const category = formData.get('category') || 'Uncategorized';
 
         if (!file) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
-        // Upload to Vercel Blob
-        const blob = await put(file.name, file, {
+        // Upload to Vercel Blob with category folder
+        const blob = await put(`gallery/${category}/${file.name}`, file, {
             access: 'public',
         });
 

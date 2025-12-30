@@ -7,6 +7,7 @@ export default function UploadPage() {
     const [status, setStatus] = useState('');
     const [preview, setPreview] = useState(null);
     const [password, setPassword] = useState('');
+    const [category, setCategory] = useState('Rose'); // Default category
 
     const handleFileChange = (e) => {
         const f = e.target.files[0];
@@ -24,6 +25,7 @@ export default function UploadPage() {
 
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('category', category);
 
         try {
             const res = await fetch('/api/upload', {
@@ -73,6 +75,30 @@ export default function UploadPage() {
                             outline: 'none'
                         }}
                     />
+
+                    <select
+                        value={category}
+                        onChange={(e) => setCategory(e.target.value)}
+                        required
+                        style={{
+                            padding: '12px 15px',
+                            background: 'rgba(255,255,255,0.05)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            borderRadius: '8px',
+                            color: '#fff',
+                            fontSize: '0.9rem',
+                            outline: 'none',
+                            appearance: 'none',
+                            cursor: 'pointer'
+                        }}
+                    >
+                        <option value="Rose">Rose</option>
+                        <option value="Tulip">Tulip</option>
+                        <option value="Lily">Lily</option>
+                        <option value="Sunflower">Sunflower</option>
+                        <option value="Orchid">Orchid</option>
+                        <option value="Others">Others</option>
+                    </select>
 
                     <div style={{
                         border: '2px dashed #ffffff33',

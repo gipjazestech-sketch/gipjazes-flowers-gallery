@@ -2,18 +2,30 @@ import { list } from '@vercel/blob';
 import Link from 'next/link';
 import Image from 'next/image';
 import ImageGallery from '@/components/ImageGallery';
+import dynamic from 'next/dynamic';
+
+const GallerySection = dynamic(() => import('@/components/GallerySection'), {
+  loading: () => <div style={{ minHeight: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p style={{ opacity: 0.5 }}>Loading Gallery...</p></div>,
+  ssr: true,
+});
 
 export const dynamic = 'force-dynamic';
 
 async function getImages() {
   try {
     const { blobs } = await list();
-    // Use the blob URLs directly for the gallery
-    return blobs.map(blob => ({
-      src: blob.url,
-      title: blob.pathname,
-      downloadUrl: blob.downloadUrl || blob.url
-    }));
+    return blobs.map(blob => {
+      // Parse category from path: "gallery/Rose/file.jpg"
+      const pathParts = blob.pathname.split('/');
+      const category = pathParts.length > 2 ? pathParts[pathParts.length - 2] : 'Others';
+
+      return {
+        src: blob.url,
+        title: blob.pathname,
+        category: category,
+        downloadUrl: blob.downloadUrl || blob.url
+      };
+    });
   } catch (err) {
     console.error('Error fetching blobs:', err);
     return [];
@@ -40,16 +52,9 @@ export default async function Home() {
           <p style={{ fontSize: '0.9rem', color: '#10b981' }}>⚡ Optimized for Mobile & Android - Lightning Fast Loading</p>
         </div>
 
-        <div style={{ marginTop: '20px' }}>
-          <Link href="/admin/upload" style={{
-            opacity: 0.4, fontSize: '0.8rem', textDecoration: 'none', marginRight: '15px'
-          }}>
-            Owner Portal
-          </Link>
-        </div>
       </header>
 
-      <ImageGallery images={images} />
+      <GallerySection images={images} />
 
       <section style={{ marginTop: '80px', padding: '40px', background: 'rgba(255,255,255,0.03)', borderRadius: '30px', textAlign: 'center' }}>
         <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Premium Performance</h2>
