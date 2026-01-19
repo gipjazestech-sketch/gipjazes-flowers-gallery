@@ -14,7 +14,10 @@ export default function UploadPage() {
         const selectedFiles = Array.from(e.target.files);
         if (selectedFiles.length > 0) {
             setFiles(selectedFiles);
-            const newPreviews = selectedFiles.map(f => URL.createObjectURL(f));
+            const newPreviews = selectedFiles.map(f => ({
+                url: URL.createObjectURL(f),
+                type: f.type.startsWith('video/') ? 'video' : 'image'
+            }));
             setPreviews(newPreviews);
         }
     };
@@ -57,7 +60,7 @@ export default function UploadPage() {
 
         setUploading(false);
         if (failCount === 0) {
-            setStatus(`Success! ${successCount} flowers planted.`);
+            setStatus(`Success! ${successCount} wallpapers uploaded.`);
             setFiles([]);
             setPreviews([]);
             setPassword('');
@@ -70,8 +73,8 @@ export default function UploadPage() {
     return (
         <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
             <div className="glass-panel" style={{ padding: '40px', width: '100%', maxWidth: '600px' }}>
-                <h2 style={{ textAlign: 'center', marginBottom: '30px', background: 'linear-gradient(to right, #d946ef, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    Plant Multiple Flowers
+                <h2 style={{ textAlign: 'center', marginBottom: '30px', background: 'linear-gradient(to right, #3b82f6, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                    Upload Premium Wallpapers
                 </h2>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     <input
@@ -138,7 +141,7 @@ export default function UploadPage() {
                         <input
                             id="fileInput"
                             type="file"
-                            accept="image/*"
+                            accept="image/*,video/*"
                             multiple
                             onChange={handleFileChange}
                             style={{
@@ -156,13 +159,17 @@ export default function UploadPage() {
                                 padding: '10px'
                             }}>
                                 {previews.map((preview, i) => (
-                                    <img key={i} src={preview} alt="Preview" style={{ width: '100%', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                                    preview.type === 'video' ? (
+                                        <video key={i} src={preview.url} muted style={{ width: '100%', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                                    ) : (
+                                        <img key={i} src={preview.url} alt="Preview" style={{ width: '100%', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                                    )
                                 ))}
                             </div>
                         ) : (
                             <div style={{ pointerEvents: 'none' }}>
-                                <p style={{ fontSize: '2rem', marginBottom: '10px' }}>🌸</p>
-                                <p style={{ opacity: 0.5 }}>Drag & drop or click to select multiple</p>
+                                <p style={{ fontSize: '2rem', marginBottom: '10px' }}>🎬</p>
+                                <p style={{ opacity: 0.5 }}>Drag & drop images or videos</p>
                             </div>
                         )}
                     </div>
@@ -174,10 +181,11 @@ export default function UploadPage() {
                         style={{
                             justifyContent: 'center',
                             opacity: (uploading || files.length === 0 || !password) ? 0.5 : 1,
-                            cursor: (uploading || files.length === 0 || !password) ? 'not-allowed' : 'pointer'
+                            cursor: (uploading || files.length === 0 || !password) ? 'not-allowed' : 'pointer',
+                            background: 'linear-gradient(45deg, #0070f3, #8b5cf6)'
                         }}
                     >
-                        {uploading ? 'Planting...' : `Upload ${files.length} to Gallery`}
+                        {uploading ? 'Uploading...' : `Upload ${files.length} Wallpapers`}
                     </button>
 
                     {status && <p style={{ textAlign: 'center', marginTop: '10px', color: status.includes('Success') ? '#4ade80' : status.includes('Uploading') ? '#3b82f6' : '#ef4444' }}>{status}</p>}

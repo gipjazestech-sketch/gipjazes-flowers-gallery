@@ -1,6 +1,7 @@
 'use client'
 
 import OptimizedImage from './OptimizedImage'
+import LiveWallpaper from './LiveWallpaper'
 import { Share2 } from 'lucide-react'
 import './Gallery.css'
 
@@ -24,21 +25,36 @@ export default function ImageGallery({ images = [] }) {
     )
 }
 
+function isVideo(url) {
+    if (!url) return false
+    const videoExtensions = ['.mp4', '.webm', '.ogg', '.mov']
+    return videoExtensions.some(ext => url.toLowerCase().endsWith(ext)) || url.includes('video/')
+}
+
 function ImageCard({ image, index }) {
     const imageSrc = image.src || image.url
+
+    const isLive = isVideo(imageSrc)
 
     return (
         <div
             className="group relative flower-card rounded-lg overflow-hidden"
-            style={{ aspectRatio: '4/5', minHeight: '350px' }}
+            style={{ aspectRatio: '16/9', minHeight: '350px' }}
         >
-            <OptimizedImage
-                src={imageSrc}
-                alt="Flower"
-                fill={true}
-                priority={index < 8}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
+            {isLive ? (
+                <LiveWallpaper
+                    src={imageSrc}
+                    priority={index < 8}
+                />
+            ) : (
+                <OptimizedImage
+                    src={imageSrc}
+                    alt="Wallpaper"
+                    fill={true}
+                    priority={index < 8}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+            )}
 
             <div className="card-overlay-permanent" style={{ display: 'flex', gap: '10px' }}>
                 <a
