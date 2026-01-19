@@ -61,24 +61,25 @@ export default function GallerySection({ images }) {
                 href="/admin/upload"
                 style={{
                     position: 'fixed',
-                    bottom: '30px',
+                    top: '30px',
                     right: '30px',
-                    width: '60px',
-                    height: '60px',
+                    width: '40px',
+                    height: '40px',
                     borderRadius: '50%',
-                    backgroundColor: '#3b82f6',
+                    backgroundColor: '#0070f3',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 8px 25px rgba(59, 130, 246, 0.4)',
                     zIndex: 1000,
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    cursor: 'pointer'
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    border: 'none',
+                    boxShadow: 'none'
                 }}
                 className="hover-scale"
                 title="Owner Portal"
             >
-                <Lock size={20} color="white" />
+                {/* Simplified: No inner dot as requested */}
             </Link>
         </>
     );

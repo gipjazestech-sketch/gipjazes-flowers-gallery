@@ -53,15 +53,15 @@ function ImageCard({ image, index }) {
                         <polyline points="7 10 12 15 17 10" />
                         <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    <span>GET</span>
+                    <span>DOWNLOAD</span>
                 </a>
                 <button
                     onClick={(e) => {
                         e.stopPropagation();
                         if (navigator.share) {
                             navigator.share({
-                                title: 'Gipjazes Flowers',
-                                text: 'Check out this stunning 4D Digital Flower!',
+                                title: 'Gipjazes Wallpapers',
+                                text: 'Check out this stunning high-quality wallpaper!',
                                 url: window.location.href,
                             });
                         }

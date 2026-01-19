@@ -17,6 +17,30 @@ export default function sitemap() {
             priority: 0.8,
         },
         {
+            url: `${baseUrl}/faq`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: `${baseUrl}/articles`,
+            lastModified: currentDate,
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
+            url: `${baseUrl}/articles/resolution-guide`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/terms`,
+            lastModified: currentDate,
+            changeFrequency: 'monthly',
+            priority: 0.5,
+        },
+        {
             url: `${baseUrl}/privacy`,
             lastModified: currentDate,
             changeFrequency: 'monthly',

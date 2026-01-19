@@ -3,60 +3,75 @@
 import { useState } from 'react';
 
 export default function UploadPage() {
-    const [file, setFile] = useState(null);
+    const [files, setFiles] = useState([]);
     const [status, setStatus] = useState('');
-    const [preview, setPreview] = useState(null);
+    const [previews, setPreviews] = useState([]);
     const [password, setPassword] = useState('');
     const [category, setCategory] = useState('Rose'); // Default category
+    const [uploading, setUploading] = useState(false);
 
     const handleFileChange = (e) => {
-        const f = e.target.files[0];
-        if (f) {
-            setFile(f);
-            setPreview(URL.createObjectURL(f));
+        const selectedFiles = Array.from(e.target.files);
+        if (selectedFiles.length > 0) {
+            setFiles(selectedFiles);
+            const newPreviews = selectedFiles.map(f => URL.createObjectURL(f));
+            setPreviews(newPreviews);
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!file) return;
+        if (files.length === 0) return;
 
-        setStatus('Uploading...');
+        setUploading(true);
+        setStatus(`Uploading 0/${files.length}...`);
 
-        const formData = new FormData();
-        formData.append('file', file);
-        formData.append('category', category);
+        let successCount = 0;
+        let failCount = 0;
 
-        try {
-            const res = await fetch('/api/upload', {
-                method: 'POST',
-                headers: {
-                    'x-upload-password': password,
-                },
-                body: formData,
-            });
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('category', category);
 
-            if (res.ok) {
-                setStatus('Success! Flower planted.');
-                setFile(null);
-                setPreview(null);
-                setPassword('');
-                // Reset file input
-                document.getElementById('fileInput').value = '';
-            } else {
-                const data = await res.json();
-                setStatus(`Failed: ${data.details || 'Server error'}`);
+            try {
+                const res = await fetch('/api/upload', {
+                    method: 'POST',
+                    headers: {
+                        'x-upload-password': password,
+                    },
+                    body: formData,
+                });
+
+                if (res.ok) {
+                    successCount++;
+                } else {
+                    failCount++;
+                }
+            } catch (err) {
+                failCount++;
             }
-        } catch (err) {
-            setStatus('Error: Network failure or CORS issue.');
+            setStatus(`Uploading ${i + 1}/${files.length}...`);
+        }
+
+        setUploading(false);
+        if (failCount === 0) {
+            setStatus(`Success! ${successCount} flowers planted.`);
+            setFiles([]);
+            setPreviews([]);
+            setPassword('');
+            document.getElementById('fileInput').value = '';
+        } else {
+            setStatus(`Done. ${successCount} success, ${failCount} failed.`);
         }
     };
 
     return (
         <div style={{ minHeight: '80vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}>
-            <div className="glass-panel" style={{ padding: '40px', width: '100%', maxWidth: '500px' }}>
+            <div className="glass-panel" style={{ padding: '40px', width: '100%', maxWidth: '600px' }}>
                 <h2 style={{ textAlign: 'center', marginBottom: '30px', background: 'linear-gradient(to right, #d946ef, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-                    Plant a Flower
+                    Plant Multiple Flowers
                 </h2>
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                     <input
@@ -97,6 +112,9 @@ export default function UploadPage() {
                         <option value="Lily">Lily</option>
                         <option value="Sunflower">Sunflower</option>
                         <option value="Orchid">Orchid</option>
+                        <option value="Vibrant">Vibrant</option>
+                        <option value="Nature">Nature</option>
+                        <option value="Abstract">Abstract</option>
                         <option value="Others">Others</option>
                     </select>
 
@@ -106,6 +124,7 @@ export default function UploadPage() {
                         padding: '20px',
                         minHeight: '200px',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
                         justifyContent: 'center',
                         textAlign: 'center',
@@ -120,19 +139,30 @@ export default function UploadPage() {
                             id="fileInput"
                             type="file"
                             accept="image/*"
+                            multiple
                             onChange={handleFileChange}
                             style={{
-                                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer'
+                                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', opacity: 0, cursor: 'pointer', zIndex: 2
                             }}
                         />
-                        {preview ? (
-                            <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'center' }}>
-                                <img src={preview} alt="Preview" style={{ maxWidth: '100%', maxHeight: '250px', borderRadius: '8px', objectFit: 'contain' }} />
+                        {previews.length > 0 ? (
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fill, minmax(80px, 1fr))',
+                                gap: '10px',
+                                width: '100%',
+                                maxHeight: '300px',
+                                overflowY: 'auto',
+                                padding: '10px'
+                            }}>
+                                {previews.map((preview, i) => (
+                                    <img key={i} src={preview} alt="Preview" style={{ width: '100%', height: '80px', borderRadius: '8px', objectFit: 'cover' }} />
+                                ))}
                             </div>
                         ) : (
                             <div style={{ pointerEvents: 'none' }}>
                                 <p style={{ fontSize: '2rem', marginBottom: '10px' }}>🌸</p>
-                                <p style={{ opacity: 0.5 }}>Drag & drop or click to select</p>
+                                <p style={{ opacity: 0.5 }}>Drag & drop or click to select multiple</p>
                             </div>
                         )}
                     </div>
@@ -140,12 +170,17 @@ export default function UploadPage() {
                     <button
                         type="submit"
                         className="btn-premium"
-                        style={{ justifyContent: 'center', opacity: file && password ? 1 : 0.5, pointerEvents: file && password ? 'all' : 'none' }}
+                        disabled={uploading || files.length === 0 || !password}
+                        style={{
+                            justifyContent: 'center',
+                            opacity: (uploading || files.length === 0 || !password) ? 0.5 : 1,
+                            cursor: (uploading || files.length === 0 || !password) ? 'not-allowed' : 'pointer'
+                        }}
                     >
-                        Upload to Gallery
+                        {uploading ? 'Planting...' : `Upload ${files.length} to Gallery`}
                     </button>
 
-                    {status && <p style={{ textAlign: 'center', marginTop: '10px', color: status.includes('Success') ? '#4ade80' : '#ef4444' }}>{status}</p>}
+                    {status && <p style={{ textAlign: 'center', marginTop: '10px', color: status.includes('Success') ? '#4ade80' : status.includes('Uploading') ? '#3b82f6' : '#ef4444' }}>{status}</p>}
                 </form>
 
                 <div style={{ textAlign: 'center', marginTop: '30px' }}>
