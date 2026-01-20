@@ -16,6 +16,10 @@ export async function POST(req) {
             return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
         }
 
+        if (!process.env.BLOB_READ_WRITE_TOKEN) {
+            return NextResponse.json({ error: 'Storage token is missing on server' }, { status: 500 });
+        }
+
         // Upload to Vercel Blob with category folder
         const blob = await put(`gallery/${category}/${file.name}`, file, {
             access: 'public',

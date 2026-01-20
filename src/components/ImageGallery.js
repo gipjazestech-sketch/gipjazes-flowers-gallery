@@ -7,7 +7,7 @@ import './Gallery.css'
 
 export default function ImageGallery({ images = [] }) {
     return (
-        <div className="gallery-grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3">
+        <div className="gallery-grid">
             {images.length === 0 ? (
                 <div style={{ gridColumn: '1/-1', padding: '100px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px dashed rgba(255,255,255,0.1)' }}>
                     <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>Your gallery is empty.<br />Upload your first flower!</p>
@@ -44,14 +44,14 @@ function ImageCard({ image, index }) {
             {isLive ? (
                 <LiveWallpaper
                     src={imageSrc}
-                    priority={index < 8}
+                    priority={index < 12}
                 />
             ) : (
                 <OptimizedImage
                     src={imageSrc}
                     alt="Wallpaper"
                     fill={true}
-                    priority={index < 8}
+                    priority={index < 12}
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             )}

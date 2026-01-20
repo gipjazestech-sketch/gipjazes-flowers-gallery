@@ -56,31 +56,6 @@ export default function GallerySection({ images }) {
             {/* Gallery Grid */}
             <ImageGallery images={filteredImages} />
 
-            {/* Floating Owner Portal Button */}
-            <Link
-                href="/admin/upload"
-                style={{
-                    position: 'fixed',
-                    top: '30px',
-                    right: '30px',
-                    width: '40px',
-                    height: '40px',
-                    borderRadius: '50%',
-                    backgroundColor: '#0070f3',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 1000,
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                    border: 'none',
-                    boxShadow: 'none'
-                }}
-                className="hover-scale"
-                title="Owner Portal"
-            >
-                {/* Simplified: No inner dot as requested */}
-            </Link>
         </>
     );
 }

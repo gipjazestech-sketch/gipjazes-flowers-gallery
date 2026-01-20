@@ -13,7 +13,7 @@ export default function OptimizedImage({
     priority = false,
     className = '',
     sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw',
-    quality = 60, // Lowered for faster mobile loading
+    quality = 45, // Further lowered for extreme speed
     fill = false,
 }) {
     const [isLoading, setIsLoading] = useState(true)
@@ -35,7 +35,9 @@ export default function OptimizedImage({
                 fill={fill}
                 quality={quality}
                 priority={priority}
-                sizes={sizes}
+                loading={priority ? 'eager' : 'lazy'}
+                fetchPriority={priority ? 'high' : 'auto'}
+                sizes="(max-width: 640px) 50vw, 50vw" // Always 2 columns means 50vw
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
                 onLoad={() => setIsLoading(false)}
@@ -44,11 +46,11 @@ export default function OptimizedImage({
                     setHasError(true)
                 }}
                 className={`
-                    duration-500 ease-out object-cover transition-all
-                    ${isLoading ? 'scale-105 blur-lg opacity-80' : 'scale-100 blur-0 opacity-100'}
+                    duration-300 ease-out object-cover transition-all
+                    ${isLoading ? 'scale-105 blur-lg opacity-0' : 'scale-100 blur-0 opacity-100'}
                 `}
                 style={{
-                    transition: 'transform 0.5s ease-out, filter 0.5s ease-out, opacity 0.5s ease-out',
+                    transition: 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     objectFit: 'cover'
                 }}
             />

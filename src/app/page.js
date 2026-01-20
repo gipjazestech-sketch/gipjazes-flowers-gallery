@@ -12,6 +12,10 @@ const GallerySection = nextDynamic(() => import('@/components/GallerySection'), 
 export const dynamic = 'force-dynamic';
 
 async function getImages() {
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    console.warn('BLOB_READ_WRITE_TOKEN is missing. Returning empty gallery.');
+    return [];
+  }
   try {
     const { blobs } = await list();
     return blobs.map(blob => {
@@ -56,6 +60,53 @@ export default async function Home() {
 
       </header>
 
+      {/* New Expanded Education Section at the top */}
+      <section style={{
+        marginBottom: '60px',
+        padding: '40px',
+        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(217, 70, 239, 0.08))',
+        borderRadius: '30px',
+        border: '1px solid rgba(255,255,255,0.1)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+            <span style={{ padding: '5px 12px', background: '#3b82f6', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1px' }}>NEW GUIDE</span>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800' }}>Become a Web Developer</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', marginBottom: '30px' }}>
+            <div>
+              <p style={{ opacity: 0.8, lineHeight: '1.7', marginBottom: '20px' }}>
+                Ever wondered how websites like Gipjazes are built? We believe anyone can become a professional developer by following a fast-track, project-based approach.
+              </p>
+              <Link href="/articles/how-to-become-a-web-developer" style={{
+                display: 'inline-block',
+                padding: '12px 25px',
+                background: '#3b82f6',
+                color: '#fff',
+                textDecoration: 'none',
+                borderRadius: '12px',
+                fontWeight: 'bold',
+                transition: 'all 0.3s ease'
+              }} className="hover-scale">
+                Start Your Journey →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h4 style={{ color: '#60a5fa', marginBottom: '10px' }}>What You'll Learn:</h4>
+              <ul style={{ paddingLeft: '20px', opacity: 0.7, fontSize: '0.9rem', lineHeight: '1.8' }}>
+                <li>Modern HTML5 & CSS3 Architecture</li>
+                <li>JavaScript Mastery for 2026</li>
+                <li>Next.js & React Frameworks</li>
+                <li>AI-Assisted Coding Workflows</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <GallerySection images={images} />
 
       <section style={{ marginTop: '80px', padding: '60px 40px', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
@@ -80,19 +131,19 @@ export default async function Home() {
         </div>
 
         <div style={{ marginTop: '80px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '40px' }}>
-          <div style={{ background: 'rgba(59, 130, 246, 0.05)', padding: '40px', borderRadius: '30px', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
-            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '20px' }}>Knowledge Center</h3>
+          <div style={{ background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '30px' }}>
+            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '20px' }}>Community Support</h3>
             <p style={{ opacity: 0.7, marginBottom: '25px', lineHeight: '1.7' }}>
-              Want to know more about the science of digital art and displays? Visit our resolution guide to understand how to choose the perfect wallpaper for your specific machine.
+              Join our growing community of digital artists and developers. Get help with your projects and share your latest wallpaper creations.
             </p>
-            <Link href="/articles/resolution-guide" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}>View Guide →</Link>
+            <Link href="/faq" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}>Join Community →</Link>
           </div>
           <div style={{ background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '30px' }}>
-            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '20px' }}>Quick Support</h3>
+            <h3 style={{ fontSize: '1.8rem', color: '#fff', marginBottom: '20px' }}>Resolution Guide</h3>
             <p style={{ opacity: 0.7, marginBottom: '25px', lineHeight: '1.7' }}>
-              Have questions about licensing, privacy, or technical issues? Our comprehensive FAQ covers everything you need to know about our service.
+              Understand the science behind 4K displays and how to choose the perfect resolution for your specific device and pixel density.
             </p>
-            <Link href="/faq" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}>Read FAQ →</Link>
+            <Link href="/articles/resolution-guide" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: 'bold' }}>Read Guide →</Link>
           </div>
         </div>
 
@@ -137,7 +188,6 @@ export default async function Home() {
             <h4 style={{ fontSize: '0.9rem', color: '#fff', marginBottom: '20px', letterSpacing: '1px' }}>COMPANY</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
               <Link href="/about" style={{ color: '#fff', opacity: 0.4, textDecoration: 'none', fontSize: '0.85rem' }}>About Us</Link>
-              <Link href="/admin/upload" style={{ color: '#fff', opacity: 0.4, textDecoration: 'none', fontSize: '0.85rem' }}>Owner Portal</Link>
             </div>
           </div>
         </div>
