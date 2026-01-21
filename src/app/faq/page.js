@@ -12,11 +12,11 @@ export default function FAQPage() {
         },
         {
             q: "How do I set the wallpaper on my Android device?",
-            a: "Download the image, open it in your Gallery app, tap the 'More' or 'Three dots' menu, and select 'Set as wallpaper'. You can choose between Home screen, Lock screen, or both."
+            a: "Download the image, open it in your Gallery app, tap the &apos;More&apos; or &apos;Three dots&apos; menu, and select &apos;Set as wallpaper&apos;. You can choose between Home screen, Lock screen, or both."
         },
         {
             q: "What does '8DX Rendering' mean?",
-            a: "8DX is our proprietary rendering pipeline that combines spatial depth modeling with high-dynamic-range color grading to create images that feel 'alive' on modern OLED and Liquid Retina displays."
+            a: "8DX is our proprietary rendering pipeline that combines spatial depth modeling with high-dynamic-range color grading to create images that feel &apos;alive&apos; on modern OLED and Liquid Retina displays."
         },
         {
             q: "Do you have wallpapers for iPhone/iOS?",
@@ -46,7 +46,7 @@ export default function FAQPage() {
 
             <section style={{ marginTop: '80px', padding: '40px', background: 'rgba(59, 130, 246, 0.05)', borderRadius: '30px', textAlign: 'center' }}>
                 <h2 style={{ color: '#fff', marginBottom: '15px' }}>Still have questions?</h2>
-                <p style={{ marginBottom: '25px' }}>We're here to help you get the best digital experience.</p>
+                <p style={{ marginBottom: '25px' }}>We&apos;re here to help you get the best digital experience.</p>
                 <a href="mailto:support@gipjazes.com" style={{
                     display: 'inline-block',
                     padding: '12px 30px',

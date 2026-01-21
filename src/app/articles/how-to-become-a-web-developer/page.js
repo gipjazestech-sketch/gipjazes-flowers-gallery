@@ -20,13 +20,13 @@ export default function WebDevGuide() {
 
             {/* Section 1: Mindset */}
             <section style={{ marginBottom: '80px' }}>
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '30px', color: '#60a5fa', fontWeight: '800' }}>01. The Builder's Mindset</h2>
+                <h2 style={{ fontSize: '2.5rem', marginBottom: '30px', color: '#60a5fa', fontWeight: '800' }}>01. The Builder&apos;s Mindset</h2>
                 <div style={{ background: 'rgba(255,255,255,0.02)', padding: '40px', borderRadius: '32px', border: '1px solid rgba(255,255,255,0.08)', boxShadow: '0 20px 50px rgba(0,0,0,0.3)' }}>
                     <p style={{ fontSize: '1.1rem', marginBottom: '20px' }}>
                         Before touching code, you must understand one thing: **Web development is about solving problems, not just writing syntax.**
                     </p>
                     <p style={{ marginBottom: '20px' }}>
-                        The industry moves fast. Frameworks die, but fundamental principles remain. To succeed, you must become an "Infinite Learner." Don't wait until you "know everything" to build. Build to learn. If you want to build a gallery like this one, start by trying to display one single image. Then two. Then add a button.
+                        The industry moves fast. Frameworks die, but fundamental principles remain. To succeed, you must become an &quot;Infinite Learner.&quot; Don&apos;t wait until you &quot;know everything&quot; to build. Build to learn. If you want to build a gallery like this one, start by trying to display one single image. Then two. Then add a button.
                     </p>
                     <blockquote style={{ borderLeft: '4px solid #3b82f6', paddingLeft: '20px', fontStyle: 'italic', opacity: 0.9, fontSize: '1.1rem', margin: '30px 0' }}>
                         "Programming is not about what you know; it's about what you can figure out."
@@ -92,7 +92,7 @@ export default function WebDevGuide() {
                     <div style={{ background: 'rgba(255,255,255,0.03)', padding: '30px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
                         <h3 style={{ fontSize: '1.5rem', color: '#fb7185', marginBottom: '15px' }}>AI-Assisted Dev</h3>
                         <p style={{ opacity: 0.7, fontSize: '0.95rem', marginBottom: '15px' }}>
-                            Use tools like GitHub Copilot or Cursor. They aren't just for writing code; they are for explaining it. Ask AI "How does this function work?" to learn faster.
+                            Use tools like GitHub Copilot or Cursor. They aren&apos;t just for writing code; they are for explaining it. Ask AI &quot;How does this function work?&quot; to learn faster.
                         </p>
                         <p style={{ fontSize: '0.85rem', color: '#fb7185' }}>Tip: Use AI to generate boilerplate, but always review the logic.</p>
                     </div>
@@ -105,12 +105,12 @@ export default function WebDevGuide() {
                 <div style={{ background: 'rgba(59, 130, 246, 0.05)', padding: '40px', borderRadius: '32px', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
                     <h3 style={{ fontSize: '1.8rem', marginBottom: '20px' }}>Architecting for 2026</h3>
                     <p style={{ marginBottom: '25px', opacity: 0.8 }}>
-                        The web has shifted toward "Server Components." This means your site can load faster because the server does the heavy lifting before the user even sees the page.
+                        The web has shifted toward &quot;Server Components.&quot; This means your site can load faster because the server does the heavy lifting before the user even sees the page.
                     </p>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '30px' }}>
                         <div style={{ borderLeft: '2px solid #3b82f6', paddingLeft: '20px' }}>
                             <h4 style={{ fontWeight: 'bold', marginBottom: '10px' }}>Zero-Bundle CSS</h4>
-                            <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>Using Tailwind with Next.js ensures your CSS doesn't slow down your site as it grows.</p>
+                            <p style={{ fontSize: '0.85rem', opacity: 0.6 }}>Using Tailwind with Next.js ensures your CSS doesn&apos;t slow down your site as it grows.</p>
                         </div>
                         <div style={{ borderLeft: '2px solid #d946ef', paddingLeft: '20px' }}>
                             <h4 style={{ fontWeight: 'bold', marginBottom: '10px' }}>Image Optimization</h4>

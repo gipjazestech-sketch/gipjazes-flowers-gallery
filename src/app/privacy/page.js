@@ -28,10 +28,10 @@ export default function PrivacyPage() {
                 <section>
                     <h2 style={{ color: '#fff', fontSize: '1.5rem', marginBottom: '15px' }}>3. Google AdSense & Cookies</h2>
                     <p>
-                        We use Google AdSense to serve advertisements on our website. To do this, Google and third-party vendors use cookies to serve ads based on a user's prior visits to our website or other websites.
+                        We use Google AdSense to serve advertisements on our website. To do this, Google and third-party vendors use cookies to serve ads based on a user&apos;s prior visits to our website or other websites.
                     </p>
                     <p style={{ marginTop: '15px' }}>
-                        Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" style={{ color: '#3b82f6' }}>Ads Settings</a>.
+                        Google&apos;s use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our sites and/or other sites on the Internet. Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" style={{ color: '#3b82f6' }}>Ads Settings</a>.
                     </p>
                 </section>
 

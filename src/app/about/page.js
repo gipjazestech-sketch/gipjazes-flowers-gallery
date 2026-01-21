@@ -16,10 +16,10 @@ export default function AboutPage() {
                 <section style={{ background: 'rgba(255,255,255,0.02)', padding: '50px', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
                     <h2 style={{ color: '#fff', fontSize: '2rem', marginBottom: '25px' }}>Our Vision</h2>
                     <p style={{ lineHeight: '1.8', fontSize: '1.1rem', marginBottom: '20px' }}>
-                        In an era where we spend hours every day looking at our screens, we believe that the backdrop of your digital life should be a source of inspiration, calm, and beauty. Gipjazes Wallpapers was born from a simple mission: to curate and create the world's most stunning digital wallpapers, optimized for the modern high-resolution displays of today and tomorrow.
+                        In an era where we spend hours every day looking at our screens, we believe that the backdrop of your digital life should be a source of inspiration, calm, and beauty. Gipjazes Wallpapers was born from a simple mission: to curate and create the world&apos;s most stunning digital wallpapers, optimized for the modern high-resolution displays of today and tomorrow.
                     </p>
                     <p style={{ lineHeight: '1.8', fontSize: '1.1rem' }}>
-                        We don't just "host" images; we select pieces that transform your device into a window to another world. From the intricate geometry of a single petal to the sweeping vistas of cosmic nebulas, every asset in our gallery is a testament to the intersection of nature and technology.
+                        We don&apos;t just &quot;host&quot; images; we select pieces that transform your device into a window to another world. From the intricate geometry of a single petal to the sweeping vistas of cosmic nebulas, every asset in our gallery is a testament to the intersection of nature and technology.
                     </p>
                 </section>
 
@@ -27,14 +27,14 @@ export default function AboutPage() {
                     <div style={{ background: 'rgba(59, 130, 246, 0.05)', padding: '40px', borderRadius: '30px', border: '1px solid rgba(59, 130, 246, 0.1)' }}>
                         <h2 style={{ color: '#fff', marginBottom: '20px' }}>Technical Excellence</h2>
                         <p style={{ lineHeight: '1.8' }}>
-                            Every wallpaper is processed through our proprietary optimization pipeline. We ensure that every pixel is perfect, utilizing <strong>8DX rendering techniques</strong> and AI-enhanced upscaling to provide native 4K and 8K support. Our mobile-first approach ensures that whether you're on a flagship Android or the latest iOS device, the crop and resolution are flawless.
+                            Every wallpaper is processed through our proprietary optimization pipeline. We ensure that every pixel is perfect, utilizing <strong>8DX rendering techniques</strong> and AI-enhanced upscaling to provide native 4K and 8K support. Our mobile-first approach ensures that whether you&apos;re on a flagship Android or the latest iOS device, the crop and resolution are flawless.
                         </p>
                     </div>
 
                     <div style={{ background: 'rgba(255,255,255,0.03)', padding: '40px', borderRadius: '30px', border: '1px solid rgba(255,255,255,0.05)' }}>
                         <h2 style={{ color: '#fff', marginBottom: '20px' }}>Human Curation</h2>
                         <p style={{ lineHeight: '1.8' }}>
-                            While we leverage AI for technical tasks, the final choice is always human. Our team of digital artists and curators reviews every submission for composition, color balance, and emotive impact. This "Human-in-the-loop" philosophy is what sets Gipjazes apart from generic, automated wallpaper sites.
+                            While we leverage AI for technical tasks, the final choice is always human. Our team of digital artists and curators reviews every submission for composition, color balance, and emotive impact. This &quot;Human-in-the-loop&quot; philosophy is what sets Gipjazes apart from generic, automated wallpaper sites.
                         </p>
                     </div>
                 </section>

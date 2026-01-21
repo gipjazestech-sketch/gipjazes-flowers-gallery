@@ -39,20 +39,20 @@ function ImageCard({ image, index }) {
     return (
         <div
             className="group relative flower-card rounded-lg overflow-hidden"
-            style={{ aspectRatio: '16/9', minHeight: '350px' }}
+            style={{ aspectRatio: '16/9', maxHeight: '400px' }}
         >
             {isLive ? (
                 <LiveWallpaper
                     src={imageSrc}
-                    priority={index < 12}
+                    priority={index < 4}
                 />
             ) : (
                 <OptimizedImage
                     src={imageSrc}
                     alt="Wallpaper"
                     fill={true}
-                    priority={index < 12}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={index < 4}
+                    sizes="(max-width: 640px) 100vw, 600px"
                 />
             )}
 

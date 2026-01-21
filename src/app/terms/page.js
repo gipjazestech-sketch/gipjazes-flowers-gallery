@@ -46,7 +46,7 @@ export default function TermsPage() {
             <section style={{ marginBottom: '50px' }}>
                 <h2 style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '10px', marginBottom: '20px' }}>4. Disclaimer of Warranty</h2>
                 <p>
-                    Images are provided "as-is" without warranty of any kind. While we strive for absolute quality, Gipjazes Wallpapers is not responsible for any issues arising from the use of our digital assets.
+                    Images are provided &quot;as-is&quot; without warranty of any kind. While we strive for absolute quality, Gipjazes Wallpapers is not responsible for any issues arising from the use of our digital assets.
                 </p>
             </section>
 

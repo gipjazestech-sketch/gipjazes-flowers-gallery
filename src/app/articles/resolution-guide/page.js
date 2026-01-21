@@ -16,12 +16,12 @@ export default function ResolutionGuide() {
 
             <article style={{ fontSize: '1.1rem' }}>
                 <p style={{ marginBottom: '30px' }}>
-                    In the digital age, your screen is more than just a tool—it's a canvas. But to make that canvas truly shine, you need to understand the science behind the pixels. Choosing the right wallpaper isn't just about the image; it's about the math.
+                    In the digital age, your screen is more than just a tool&mdash;it&apos;s a canvas. But to make that canvas truly shine, you need to understand the science behind the pixels. Choosing the right wallpaper isn&apos;t just about the image; it&apos;s about the math.
                 </p>
 
                 <h2 style={{ color: '#fff', fontSize: '2rem', marginTop: '50px', marginBottom: '20px' }}>What is "Resolution"?</h2>
                 <p>
-                    Resolution refers to the number of distinct pixels in each dimension that can be displayed. It's usually quoted as width × height. For example, a 1920x1080 resolution means 1920 pixels across and 1080 pixels down. The higher the number, the more detail the image can hold.
+                    Resolution refers to the number of distinct pixels in each dimension that can be displayed. It&apos;s usually quoted as width &times; height. For example, a 1920x1080 resolution means 1920 pixels across and 1080 pixels down. The higher the number, the more detail the image can hold.
                 </p>
 
                 <h2 style={{ color: '#fff', fontSize: '2rem', marginTop: '50px', marginBottom: '20px' }}>The Hierarchy of Quality</h2>
@@ -42,7 +42,7 @@ export default function ResolutionGuide() {
 
                 <h2 style={{ color: '#fff', fontSize: '2rem', marginTop: '50px', marginBottom: '20px' }}>PPI: The Hidden Factor</h2>
                 <p>
-                    Pixels Per Inch (PPI) measures the pixel density. A 4K resolution on a 5-inch smartphone looks much sharper than 4K on a 50-inch TV because the PPI is significantly higher. When choosing a wallpaper, always aim for a resolution that matches or exceeds your screen's native pixels to avoid "blurriness" or "pixelation".
+                    Pixels Per Inch (PPI) measures the pixel density. A 4K resolution on a 5-inch smartphone looks much sharper than 4K on a 50-inch TV because the PPI is significantly higher. When choosing a wallpaper, always aim for a resolution that matches or exceeds your screen&apos;s native pixels to avoid &quot;blurriness&quot; or &quot;pixelation&quot;.
                 </p>
 
                 <h2 style={{ color: '#fff', fontSize: '2rem', marginTop: '50px', marginBottom: '20px' }}>Optimization at Gipjazes</h2>
@@ -53,7 +53,7 @@ export default function ResolutionGuide() {
                 <div style={{ background: 'rgba(59, 130, 246, 0.1)', padding: '40px', borderRadius: '30px', margin: '60px 0', border: '1px solid rgba(59, 130, 246, 0.2)' }}>
                     <h3 style={{ color: '#fff', marginBottom: '15px' }}>Pro Tip: Match Aspect Ratios</h3>
                     <p>
-                        Always check if your device is 16:9 (standard widescreen), 21:9 (ultrawide), or 19.5:9 (modern smartphone). Using an image with the wrong aspect ratio results in "letterboxing" or awkward crops. Our collection includes versions for every screen type.
+                        Always check if your device is 16:9 (standard widescreen), 21:9 (ultrawide), or 19.5:9 (modern smartphone). Using an image with the wrong aspect ratio results in &quot;letterboxing&quot; or awkward crops. Our collection includes versions for every screen type.
                     </p>
                 </div>
             </article>

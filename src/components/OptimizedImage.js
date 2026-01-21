@@ -37,7 +37,7 @@ export default function OptimizedImage({
                 priority={priority}
                 loading={priority ? 'eager' : 'lazy'}
                 fetchPriority={priority ? 'high' : 'auto'}
-                sizes="(max-width: 640px) 50vw, 50vw" // Always 2 columns means 50vw
+                sizes={sizes} // Use the passed prop which is now optimized for 1-column
                 placeholder="blur"
                 blurDataURL={BLUR_PLACEHOLDER}
                 onLoad={() => setIsLoading(false)}
