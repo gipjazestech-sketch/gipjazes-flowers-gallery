@@ -85,6 +85,12 @@ export default function RootLayout({ children }) {
             })();
           `}
         </Script>
+        <Script
+          async
+          custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
+          strategy="afterInteractive"
+        />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://securepubads.g.doubleclick.net" />
         <link rel="preconnect" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com" crossOrigin="anonymous" />
@@ -108,6 +114,9 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={outfit.className} style={{ margin: 0, color: 'white' }}>
+        <amp-auto-ads type="adsense"
+          data-ad-client="ca-pub-2198481548549346">
+        </amp-auto-ads>
         <Background />
         <main style={{ position: 'relative', zIndex: 1, minHeight: '100vh', overflowY: 'auto' }}>
           {children}

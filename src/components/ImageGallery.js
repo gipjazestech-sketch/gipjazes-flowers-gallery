@@ -9,8 +9,20 @@ export default function ImageGallery({ images = [] }) {
     return (
         <div className="gallery-grid">
             {images.length === 0 ? (
-                <div style={{ gridColumn: '1/-1', padding: '100px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px dashed rgba(255,255,255,0.1)' }}>
-                    <p style={{ fontSize: '1.5rem', opacity: 0.3 }}>Your gallery is empty.<br />Upload your first flower!</p>
+                <div style={{ gridColumn: '1/-1', padding: '80px', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: '30px', border: '1px dashed rgba(255,255,255,0.1)' }}>
+                    <h3 style={{ fontSize: '2rem', marginBottom: '15px' }}>Gallery Collection Coming Soon</h3>
+                    <p style={{ fontSize: '1.2rem', opacity: 0.6, marginBottom: '30px', maxWidth: '600px', margin: '0 auto 30px' }}>
+                        Our curators are currently selecting the finest 4K digital flora for this section.
+                        In the meantime, explore our <Link href="/articles" style={{ color: '#d946ef' }}>latest articles</Link> on digital art and design.
+                    </p>
+                    <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+                        <Link href="/about" className="btn-premium" style={{ fontSize: '0.9rem', padding: '10px 20px', background: 'rgba(255,255,255,0.1)' }}>
+                            About Us
+                        </Link>
+                        <Link href="/articles" className="btn-premium" style={{ fontSize: '0.9rem', padding: '10px 20px' }}>
+                            Read Blog
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 images.map((image, index) => (
@@ -49,7 +61,8 @@ function ImageCard({ image, index }) {
             ) : (
                 <OptimizedImage
                     src={imageSrc}
-                    alt="Wallpaper"
+                    alt={image.title || `Gipjazes Premium Wallpaper ${index + 1}`}
+                    title={image.title || "Premium 4K Wallpaper"}
                     fill={true}
                     priority={index < 4}
                     sizes="(max-width: 640px) 100vw, 600px"
