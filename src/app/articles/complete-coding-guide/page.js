@@ -12,7 +12,7 @@ export default function CodingGuide() {
             <header style={{ textAlign: 'center', marginBottom: '80px' }}>
                 <Link href="/articles" style={{ color: '#3b82f6', textDecoration: 'none', marginBottom: '20px', display: 'inline-block', fontWeight: 'bold' }}>← Back to Academy</Link>
                 <h1 style={{ fontSize: '3.5rem', background: 'linear-gradient(to right, #4ade80, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', marginBottom: '20px', fontWeight: '900' }}>
-                    The Ultimate Coding Bible
+                    The Ultimate Coding
                 </h1>
                 <p style={{ fontSize: '1.4rem', opacity: 0.8, maxWidth: '800px', margin: '0 auto' }}>
                     Mastering HTML, CSS, JavaScript, and Python: The Four Pillars of Modern Tech.

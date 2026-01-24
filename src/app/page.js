@@ -82,6 +82,100 @@ export default async function Home() {
 
       </header>
 
+      {/* NEW Ultimate Coding Section at the very top */}
+      <section style={{
+        marginBottom: '60px',
+        padding: '40px',
+        background: 'linear-gradient(135deg, rgba(74, 222, 128, 0.08), rgba(59, 130, 246, 0.08))',
+        borderRadius: '30px',
+        border: '1px solid rgba(255,255,255,0.1)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+            <span style={{ padding: '5px 12px', background: '#4ade80', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1px', color: '#000' }}>FULL COURSE</span>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800' }}>The Ultimate Coding</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', marginBottom: '30px' }}>
+            <div>
+              <p style={{ opacity: 0.8, lineHeight: '1.7', marginBottom: '20px' }}>
+                Your complete zero-to-hero guide. Master HTML5, CSS3, JavaScript, and Python in one massive, free resource.
+              </p>
+              <Link href="/articles/complete-coding-guide" style={{
+                display: 'inline-block',
+                padding: '12px 25px',
+                background: '#4ade80',
+                color: '#000',
+                textDecoration: 'none',
+                borderRadius: '12px',
+                fontWeight: 'bold',
+                transition: 'all 0.3s ease'
+              }} className="hover-scale">
+                Start Learning Now →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h4 style={{ color: '#4ade80', marginBottom: '10px' }}>Curriculum:</h4>
+              <ul style={{ paddingLeft: '20px', opacity: 0.7, fontSize: '0.9rem', lineHeight: '1.8' }}>
+                <li>HTML5 Semantic Structure</li>
+                <li>CSS3 Flexbox & Grid</li>
+                <li>Modern JavaScript (ES6+)</li>
+                <li>Python for AI & Backend</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW Cybersecurity Section */}
+      <section style={{
+        marginBottom: '60px',
+        padding: '40px',
+        background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(248, 113, 113, 0.08))',
+        borderRadius: '30px',
+        border: '1px solid rgba(255,255,255,0.1)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '20px' }}>
+            <span style={{ padding: '5px 12px', background: '#ef4444', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold', letterSpacing: '1px', color: '#fff' }}>ESSENTIAL SKILL</span>
+            <h2 style={{ fontSize: '2.2rem', fontWeight: '800' }}>Cybersecurity Mastery</h2>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px', marginBottom: '30px' }}>
+            <div>
+              <p style={{ opacity: 0.8, lineHeight: '1.7', marginBottom: '20px' }}>
+                Protect yourself and your code. Learn how hackers operate and the protocols you need to stay safe in 2026.
+              </p>
+              <Link href="/articles/cybersecurity-mastery" style={{
+                display: 'inline-block',
+                padding: '12px 25px',
+                background: '#ef4444',
+                color: '#fff',
+                textDecoration: 'none',
+                borderRadius: '12px',
+                fontWeight: 'bold',
+                transition: 'all 0.3s ease'
+              }} className="hover-scale">
+                Learn Defense →
+              </Link>
+            </div>
+            <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <h4 style={{ color: '#f87171', marginBottom: '10px' }}>Defense Protocols:</h4>
+              <ul style={{ paddingLeft: '20px', opacity: 0.7, fontSize: '0.9rem', lineHeight: '1.8' }}>
+                <li>Phishing Detection</li>
+                <li>Secure Coding Practices</li>
+                <li>Encryption Standards</li>
+                <li>Identity Protection</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* New Expanded Education Section at the top */}
       <section style={{
         marginBottom: '60px',

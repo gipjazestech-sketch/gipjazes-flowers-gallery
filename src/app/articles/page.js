@@ -29,7 +29,7 @@ export default function ArticlesPage() {
             color: "#fb7185"
         },
         {
-            title: "The Ultimate Coding Bible: HTML to Python",
+            title: "The Ultimate Coding: HTML to Python",
             summary: "A massive, zero-to-hero guide covering HTML5, CSS3, JavaScript, and Python. Everything you need to know.",
             link: "/articles/complete-coding-guide",
             date: "Jan 2026",
