@@ -29,6 +29,22 @@ export default function ArticlesPage() {
             color: "#fb7185"
         },
         {
+            title: "The Ultimate Coding Bible: HTML to Python",
+            summary: "A massive, zero-to-hero guide covering HTML5, CSS3, JavaScript, and Python. Everything you need to know.",
+            link: "/articles/complete-coding-guide",
+            date: "Jan 2026",
+            tag: "Full Course",
+            color: "#4ade80"
+        },
+        {
+            title: "Cybersecurity Mastery: Defense Protocol",
+            summary: "Learn how hackers think and how to secure your digital life. MFA, encryption, and secure coding practices.",
+            link: "/articles/cybersecurity-mastery",
+            date: "Jan 2026",
+            tag: "Security",
+            color: "#ef4444"
+        },
+        {
             title: "Understanding Wallpaper Resolutions",
             summary: "A technical guide to 4K, HD, and beyond. Learn how math defines digital quality.",
             link: "/articles/resolution-guide",

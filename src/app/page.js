@@ -12,13 +12,34 @@ const GallerySection = nextDynamic(() => import('@/components/GallerySection'), 
 export const dynamic = 'force-dynamic';
 
 async function getImages() {
+  const staticWallpapers = [
+    {
+      src: '/neon-lotus.png',
+      title: 'Neon Lotus 4K',
+      category: 'Cyberpunk',
+      downloadUrl: '/neon-lotus.png'
+    },
+    {
+      src: '/quantum-network.png',
+      title: 'Quantum Network',
+      category: 'Abstract',
+      downloadUrl: '/quantum-network.png'
+    },
+    {
+      src: '/cyber-city.png',
+      title: 'Cyber City Rain',
+      category: 'Urban',
+      downloadUrl: '/cyber-city.png'
+    }
+  ];
+
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    console.warn('BLOB_READ_WRITE_TOKEN is missing. Returning empty gallery.');
-    return [];
+    console.warn('BLOB_READ_WRITE_TOKEN is missing. Returning static gallery.');
+    return staticWallpapers;
   }
   try {
     const { blobs } = await list();
-    return blobs.map(blob => {
+    const blobImages = blobs.map(blob => {
       // Parse category from path: "gallery/Rose/file.jpg"
       const pathParts = blob.pathname.split('/');
       const category = pathParts.length > 2 ? pathParts[pathParts.length - 2] : 'Others';
@@ -30,9 +51,10 @@ async function getImages() {
         downloadUrl: blob.downloadUrl || blob.url
       };
     });
+    return [...staticWallpapers, ...blobImages];
   } catch (err) {
     console.error('Error fetching blobs:', err);
-    return [];
+    return staticWallpapers;
   }
 }
 
